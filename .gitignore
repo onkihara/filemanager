@@ -2,7 +2,6 @@ node_modules
 vendor
 .env
 .env.*
-_env
 .DS_Store
 .idea
 .vscode
