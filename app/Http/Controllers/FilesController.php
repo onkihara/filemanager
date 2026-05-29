@@ -23,6 +23,14 @@ class FilesController extends Controller
      */
     public function index(Request $request)
     {
+        // restore request params from login
+        if ($request->session()->has('request')) {
+            foreach($request->session()->get('request') as $name => $param) {
+                $request->request->add([$name => $param]);
+            }
+            $request->session()->forget('request');
+        }
+
         // save optional request->parameters in session for further use
         if ( ! $request->has('view')) {
             foreach (File::$sessionable as $parname) {

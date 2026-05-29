@@ -16,10 +16,12 @@ class AuthSimple
      */
     public function handle(Request $request, Closure $next)
     {
-        //dd(session()->all());
         if (session()->has('accesstoken')) {
             return $next($request);
         }
+
+        // store request params
+        $request->session()->put('request',$request->all());
 
         return redirect()->route('login');
     }

@@ -14,7 +14,7 @@ class OauthController extends Controller
     /**
      * Login with blikk
      */
-    public function login()
+    public function login(Request $request)
     {
         return static::oauthLogin();
     }
